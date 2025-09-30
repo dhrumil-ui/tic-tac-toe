@@ -1,0 +1,128 @@
+/* Basic layout */
+:root{
+  --board-size: 300px; /* adjust if you want bigger board */
+  --cell-size: calc(var(--board-size) / 3);
+  --accent: #0077b6;
+}
+
+*{box-sizing: border-box; font-family: Inter, system-ui, Arial, sans-serif;}
+
+body{
+  margin:0;
+  padding:20px;
+  background: linear-gradient(180deg,#f6f9fc,#e8f1f8);
+  color:#111827;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.page-container{
+  width: 100%;
+  max-width:520px;
+  text-align:center;
+}
+
+/* Header */
+h1{
+  margin-bottom:16px;
+  font-size:28px;
+  color:var(--accent);
+}
+
+/* Board layout using flexbox */
+.board{
+  width:var(--board-size);
+  height:var(--board-size);
+  display:flex;
+  flex-wrap:wrap;
+  margin: 0 auto 16px;
+  gap: 0; /* we'll rely on borders */
+  background: #0f172a11;
+  border-radius:10px;
+  padding:0;
+  box-shadow: 0 6px 18px rgba(5,30,60,0.06);
+}
+
+/* cell style */
+.cell{
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 2px solid #0b83a5; /* nicer than red */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 40px;
+  font-weight:700;
+  cursor:pointer;
+  background: linear-gradient(180deg,#e0fbff,#d0f3ff);
+  user-select:none;
+}
+
+/* Make the grid lines thicker between rows/cols like classic tic-tac-toe */
+.cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(3) { border-top-width: 0; }
+.cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9) { border-bottom-width: 0; }
+.cell:nth-child(1), .cell:nth-child(4), .cell:nth-child(7) { border-left-width: 0; }
+.cell:nth-child(3), .cell:nth-child(6), .cell:nth-child(9) { border-right-width: 0; }
+
+/* status + controls */
+.status{
+  margin-top:12px;
+  font-size:18px;
+  min-height:24px;
+}
+
+.controls{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+  justify-content:center;
+}
+
+.controls button{
+  padding:8px 12px;
+  border-radius:8px;
+  border: none;
+  cursor:pointer;
+  background: var(--accent);
+  color:white;
+  font-weight:600;
+  box-shadow:0 4px 10px rgba(3,50,80,0.12);
+}
+
+.controls button:hover{ transform: translateY(-2px); }
+
+/* scoreboard */
+.scoreboard{
+  margin-top:12px;
+  display:flex;
+  justify-content:space-around;
+  gap:12px;
+  padding:8px;
+  background:#ffffffaa;
+  border-radius:8px;
+  margin-left:auto;
+  margin-right:auto;
+  width:80%;
+}
+
+/* win animation */
+.win {
+  animation: winPulse 700ms ease-in-out;
+  transform-origin:center;
+}
+
+@keyframes winPulse{
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(255,0,0,0); }
+  40% { transform: scale(1.08); box-shadow: 0 10px 20px rgba(0,120,255,0.12); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(255,0,0,0); }
+}
+
+.notes{ margin-top:12px; font-size:12px; color:#334155; }
+
+/* responsive */
+@media (max-width:420px){
+  :root{ --board-size: 240px; }
+  .controls button{ padding:6px 8px; font-size:14px; }
+}

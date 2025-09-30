@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tic-Tac-Toe Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-container">
+    <h1>Tic-Tac-Toe</h1>
+
+    <div id="gameArea">
+      <div id="gameBoard" class="board">
+        <div id="cell-0" class="cell" onclick="cellClicked(0)"></div>
+        <div id="cell-1" class="cell" onclick="cellClicked(1)"></div>
+        <div id="cell-2" class="cell" onclick="cellClicked(2)"></div>
+
+        <div id="cell-3" class="cell" onclick="cellClicked(3)"></div>
+        <div id="cell-4" class="cell" onclick="cellClicked(4)"></div>
+        <div id="cell-5" class="cell" onclick="cellClicked(5)"></div>
+
+        <div id="cell-6" class="cell" onclick="cellClicked(6)"></div>
+        <div id="cell-7" class="cell" onclick="cellClicked(7)"></div>
+        <div id="cell-8" class="cell" onclick="cellClicked(8)"></div>
+      </div>
+
+      <div id="status" class="status">Loading...</div>
+
+      <div class="controls">
+        <button onclick="initializeGame()">Reset Game</button>
+        <button onclick="resetScores()">Reset Scores</button>
+      </div>
+
+      <div class="scoreboard">
+        <div>❌ X: <span id="scoreX">0</span></div>
+        <div>⭕ O: <span id="scoreO">0</span></div>
+        <div>Draws: <span id="scoreDraw">0</span></div>
+      </div>
+
+      <div class="notes">
+        <strong>Modification:</strong> Score tracking + emojis for X/O + win animation.
+      </div>
+    </div>
+
+    <footer>
+      <small>Built for CS 696A — Lab 3</small>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
